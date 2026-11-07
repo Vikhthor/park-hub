@@ -1,17 +1,18 @@
-import { Button } from "@/components/ui/button"
+import { ParkMap } from "./parks/map-view"
+import { ParkList } from "./parks/list-view"
+import Navbar from "@/components/navbar"
 
 export default function Page() {
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="font-mono text-xs text-muted-foreground">
-          (Press <kbd>d</kbd> to toggle dark mode)
+    <div>
+      <div className="@container/main flex flex-col h-dvh gap-2">
+        <Navbar/>
+        <div className="grid lg:grid-cols-2 flex-1 min-h-0">
+            <ParkMap/>
+            <div className="">
+                <ParkList/>
+            </div>
+            {/* <DockMenu/> */}
         </div>
       </div>
     </div>
