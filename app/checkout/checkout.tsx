@@ -325,9 +325,9 @@ export function CheckoutFormScheduleStep({ formData, onChange, quantity, setQuan
             </div>
 
             {/* <div className='text-end'>
-            <p className='text-lg font-semibold'>₦{(item.price * item.quantity).toFixed(2)}</p>
+            <p className='text-lg font-semibold'>${(item.price * item.quantity).toFixed(2)}</p>
             {item.original_price > item.price && (
-                <p className='text-muted-foreground text-xs line-through'>₦{item.original_price.toFixed(2)}</p>
+                <p className='text-muted-foreground text-xs line-through'>${item.original_price.toFixed(2)}</p>
             )}
             </div> */}
           </div>
@@ -720,7 +720,7 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
               <div className='min-w-0 flex-1'>
                 <h4 className='truncate text-sm font-medium'>{orderSummary.park.name}</h4>
                 <p className='text-muted-foreground text-xs'>{orderSummary.park.address}</p>
-                <p className='mt-1 text-sm font-medium'>₦{orderSummary.park.price}</p>
+                <p className='mt-1 text-sm font-medium'>${orderSummary.park.price}</p>
               </div>
 
               {/* <div className='mt-4 flex items-center justify-between'>
@@ -731,7 +731,7 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
                         className="size-8 cursor-pointer"
                         onClick={() => updateQuantity(orderSummary.park.id, false)}
                         disabled={orderSummary.park.quantity <= 1}
-                        aria-label={`Decrease quantity of ₦{orderSummary.park.name}`}
+                        aria-label={`Decrease quantity of ${orderSummary.park.name}`}
                     >
                         <Minus />
                     </Button>
@@ -741,16 +741,16 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
                         size='icon'
                         className="size-8 cursor-pointer"
                         onClick={() => updateQuantity(orderSummary.park.id, true)}
-                        aria-label={`Increase quantity of ₦{orderSummary.park.name}`}
+                        aria-label={`Increase quantity of ${orderSummary.park.name}`}
                     >
                         <Plus />
                     </Button>
                     </div>
 
                     <div className='text-end'>
-                    <p className='text-lg font-semibold'>₦{(orderSummary.park.price * orderSummary.park.quantity).toFixed(2)}</p>
+                    <p className='text-lg font-semibold'>${(orderSummary.park.price * orderSummary.park.quantity).toFixed(2)}</p>
                     {orderSummary.park.original_price > orderSummary.park.price && (
-                        <p className='text-muted-foreground text-xs line-through'>₦{orderSummary.park.original_price.toFixed(2)}</p>
+                        <p className='text-muted-foreground text-xs line-through'>${orderSummary.park.original_price.toFixed(2)}</p>
                     )}
                     </div>
               </div> */}
@@ -783,18 +783,18 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
         <div className='flex flex-col gap-2'>
           <div className='flex justify-between text-sm'>
             <span className='text-muted-foreground'>Subtotal</span>
-            <span>₦{subtotal.toFixed(2)}</span>
+            <span>${subtotal.toFixed(2)}</span>
           </div>
           {/* <div className='flex justify-between text-sm'>
             <span className='text-muted-foreground flex items-center gap-1'>
               <Truck className='size-3' aria-hidden='true' />
               Shipping
             </span>
-            <span>₦{orderSummary.shipping.toFixed(2)}</span>
+            <span>${orderSummary.shipping.toFixed(2)}</span>
           </div> */}
           <div className='flex justify-between text-sm'>
             <span className='text-muted-foreground'>Tax</span>
-            <span>₦{orderSummary.tax.toFixed(2)}</span>
+            <span>${orderSummary.tax.toFixed(2)}</span>
           </div>
           {orderSummary.promoDiscount > 0 ? (
             <div className='flex justify-between text-sm text-green-600'>
@@ -802,7 +802,7 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
                 <Tag className='size-3' aria-hidden='true' />
                 Promo discount
               </span>
-              <span>-₦{orderSummary.promoDiscount.toFixed(2)}</span>
+              <span>-${orderSummary.promoDiscount.toFixed(2)}</span>
             </div>
           ) : null}
         </div>
@@ -811,7 +811,7 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
 
         <div className='flex justify-between font-semibold'>
           <span>Total</span>
-          <span>₦{total.toFixed(2)}</span>
+          <span>${total.toFixed(2)}</span>
         </div>
 
         <Separator />
@@ -819,18 +819,18 @@ export function CheckoutFormOrderSummary({ promoCode, onPromoCodeChange }: Check
         <div className='flex flex-col gap-3'>
             <div className='flex justify-between text-sm'>
                 <span className='text-muted-foreground'>Subtotal</span>
-                <span>₦{subtotal.toFixed(2)}</span>
+                <span>${subtotal.toFixed(2)}</span>
             </div>
             {/* <div className='flex justify-between text-sm'>
                 <span className='text-muted-foreground'>Shipping</span>
                 <span className={shipping === 0 ? 'text-success' : ''}>
-                {shipping === 0 ? 'Free' : `₦₦{shipping.toFixed(2)}`}
+                {shipping === 0 ? 'Free' : `₦${shipping.toFixed(2)}`}
                 </span>
             </div>
             {savings > 0 && (
                 <div className='flex justify-between text-sm font-medium'>
                 <span>You Save</span>
-                <span>-₦{savings.toFixed(2)}</span>
+                <span>-${savings.toFixed(2)}</span>
                 </div>
             )} */}
         </div>
@@ -917,7 +917,7 @@ export function SpinningCounter({ value, decimals = 0, prefix, className, digitC
 
       if (isFirstRender.current || !strip.dataset.initialized || prefersReducedMotion) {
         strip.style.transition = 'none'
-        strip.style.transform = `translateY(-₦{digit * CELL_SIZE}px)`
+        strip.style.transform = `translateY(-${digit * CELL_SIZE}px)`
         strip.style.filter = 'blur(0px)'
         strip.dataset.initialized = 'true'
         void strip.offsetHeight
@@ -925,9 +925,9 @@ export function SpinningCounter({ value, decimals = 0, prefix, className, digitC
       }
 
       const landingIndex = SPINS * 10 + digit
-      strip.style.transition = `transform ₦{DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ₦{delay}ms, filter ₦{DURATION}ms ease-out ₦{delay}ms`
-      strip.style.transform = `translateY(-₦{landingIndex * CELL_SIZE}px)`
-      strip.style.filter = `blur(₦{SPIN_BLUR}px)`
+      strip.style.transition = `transform ${DURATION}ms cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms, filter ${DURATION}ms ease-out ${delay}ms`
+      strip.style.transform = `translateY(-${landingIndex * CELL_SIZE}px)`
+      strip.style.filter = `blur(${SPIN_BLUR}px)`
 
       const settleTimeout = window.setTimeout(() => {
         strip.style.filter = 'blur(0px)'
@@ -935,7 +935,7 @@ export function SpinningCounter({ value, decimals = 0, prefix, className, digitC
 
       const resetTimeout = window.setTimeout(() => {
         strip.style.transition = 'none'
-        strip.style.transform = `translateY(-₦{digit * CELL_SIZE}px)`
+        strip.style.transform = `translateY(-${digit * CELL_SIZE}px)`
         void strip.offsetHeight
       }, delay + DURATION + 30)
 
@@ -1170,7 +1170,7 @@ function buildLevel(id: string, name: string, seed: number): ParkingLevel {
       const status: SpotStatus = hash % 3 === 0 ? "taken" : hash === 4 ? "held" : "free";
       const kind: SpotKind =
         row === 0 && col < 2 ? "ev" : col === 0 && (row === 1 || row === 3) ? "accessible" : "standard";
-      spots.push({ id: `₦{id}-₦{letters[i]}₦{col + 1}`, label: `₦{letters[i]}₦{col + 1}`, row, col, kind, status });
+      spots.push({ id: `$${id}-${letters[i]}${col + 1}`, label: `${letters[i]}${col + 1}`, row, col, kind, status });
     }
   });
 
@@ -1187,7 +1187,7 @@ export function CheckoutFormParkingSlotStep() {
         <ParkingLayout
             levels={levels}
             onSelectSpot={(spot, level) => console.log("selected", spot?.label, level?.name)}
-            onConfirm={(spot, level) => alert(`Reserved ₦{spot.label} on ₦{level.name}`)}
+            onConfirm={(spot, level) => alert(`Reserved ${spot.label} on ${level.name}`)}
         />
         </main>
     </div>
